@@ -554,14 +554,14 @@ body {
       height: 1.5em;
       display: inline-block;
       margin-right: 0.2em;
-      border: 0.1em solid $primary;
+      border: 0.1em solid #bd081c;
       -webkit-box-shadow: 1px 1px 3px 0px rgba(163, 163, 163, 1);
       -moz-box-shadow: 1px 1px 3px 0px rgba(163, 163, 163, 1);
       box-shadow: 1px 1px 3px 0px rgba(163, 163, 163, 1);
       border-radius: 3px;
   
       .full {
-        background-color: $primary;
+        background-color: #009118;
         height: 100%;
         width: 100%;
       }
