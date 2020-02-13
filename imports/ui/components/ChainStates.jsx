@@ -14,6 +14,10 @@ export default class ChainStates extends Component{
 
         if (Meteor.isServer){
             let data = {}
+            if (this.props.chainStates) {
+                data.height = this.props?.chainStates?.height || null;
+                data.bondedTokens = this.props?.chainStates?.bondedTokens || null;
+            }
             if (this.props.chainStates.communityPool){
                 data.communityPool = this.props.chainStates.communityPool.map((pool,i) => {
                     return <span key={i}>{new Coin(pool.amount).stakeString('0,0.00')}</span>
@@ -25,7 +29,6 @@ export default class ChainStates extends Component{
                 data.price = this.props.coinStats.usd,
                 data.marketCap = numbro(this.props.coinStats.usd_market_cap).format("$0,0.00")
             }
-
             this.state = data;
         }
         else{
@@ -33,13 +36,21 @@ export default class ChainStates extends Component{
                 price: "-",
                 marketCap: "-",
                 inflation: 0,
-                communityPool: 0
+                communityPool: 0,
+                height: 0,
+                bondedTokens: 0
             }
         }
     }
 
     componentDidUpdate(prevProps){
         if (this.props.chainStates != prevProps.chainStates){
+            if (this.props.chainStates.height !== prevProps.chainStates.height) {
+                this.setState({ height: this.props.chainStates.height });
+            }
+            if (this.props.chainStates.bondedTokens !== prevProps.chainStates.bondedTokens) {
+                this.setState({ bondedTokens: this.props.chainStates.bondedTokens });
+            }
             if (this.props.chainStates.communityPool){
                 this.setState({
                     communityPool: this.props.chainStates.communityPool.map((pool,i) => {
@@ -49,7 +60,6 @@ export default class ChainStates extends Component{
                 })
             }
         }
-
         if (this.props.coinStats != prevProps.coinStats){
             if (this.props.coinStats.usd){
                 this.setState({
@@ -62,11 +72,14 @@ export default class ChainStates extends Component{
     render(){
         return <Card className="d-lg-inline-block">
             <CardHeader>
-                <Row className="text-nowrap">
-                    <Col xs={4} md="auto"><small><span><T>chainStates.price</T>:</span> <strong>${this.state.price}</strong></small></Col>
-                    <Col xs={8} md="auto"><small><span><T>chainStates.marketCap</T>:</span> <strong>{this.state.marketCap}</strong></small></Col>
-                    <Col xs={4} md="auto"><small><span><T>chainStates.inflation</T>:</span> <strong>{this.state.inflation}</strong></small></Col>
-                    <Col xs={8} md="auto"><small><span><T>chainStates.communityPool</T>:</span> <strong>{this.state.communityPool}</strong></small></Col>
+                <Row className="text-nowrap chain-states-wrapper">
+                    {/* Check une autre classe d'icons */}
+                    <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons">euro_symbol</i> <b className="ml-2">${this.state.price}</b></small></span></Col>
+                    <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons">height</i><T>chainStates.height</T>: <b className="ml-2">{this.state.height}</b></small></span></Col>
+                    <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons mr-2">access_time</i><T>chainStates.bondedTokens</T>: <b className="ml-2">{this.state.bondedTokens}</b></small></span></Col>
+                    <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons mr-2">trending_up</i><T>chainStates.inflation</T>: <b className="ml-2">{this.state.inflation}</b></small></span></Col>
+                    {/* <Col xs={8} md="auto"><small><span><T>chainStates.marketCap</T>:</span> <strong>{this.state.marketCap}</strong></small></Col> */}
+                    {/* <Col xs={8} md="auto"><small><span><T>chainStates.communityPool</T>:</span> <strong>{this.state.communityPool}</strong></small></Col> */}
                 </Row>
             </CardHeader>
         </Card>
