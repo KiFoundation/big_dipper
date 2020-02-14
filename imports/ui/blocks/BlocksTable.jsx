@@ -17,10 +17,14 @@ export default class BlocksTable extends Component {
         super(props);
         this.state = {
             limit: Meteor.settings.public.initialPageSize,
-            sidebarOpen: (props.location.pathname.split("/blocks/").length == 2)
+            sidebarOpen: (props?.location?.pathname?.split("/blocks/")?.length == 2)
         };
 
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    }
+
+    static defaultProps = {
+        showChainStates: true
     }
 
     isBottom(el) {
@@ -36,21 +40,23 @@ export default class BlocksTable extends Component {
     }
     
     trackScrolling = () => {
-        const wrappedElement = document.getElementById('block-table');
-        if (this.isBottom(wrappedElement)) {
-            // console.log('header bottom reached');
-            document.removeEventListener('scroll', this.trackScrolling);
-            this.setState({loadmore:true});
-            this.setState({
-                limit: this.state.limit+10
-            }, (err, result) => {
-                if (!err){
-                    document.addEventListener('scroll', this.trackScrolling);
-                }
-                if (result){
-                    this.setState({loadmore:false});
-                }
-            })
+        if (!this.props.limit) {
+            const wrappedElement = document.getElementById('block-table');
+            if (this.isBottom(wrappedElement)) {
+                // console.log('header bottom reached');
+                document.removeEventListener('scroll', this.trackScrolling);
+                this.setState({loadmore:true});
+                this.setState({
+                    limit: this.state.limit+10
+                }, (err, result) => {
+                    if (!err){
+                        document.addEventListener('scroll', this.trackScrolling);
+                    }
+                    if (result){
+                        this.setState({loadmore:false});
+                    }
+                })
+            }
         }
     };
 
@@ -81,8 +87,8 @@ export default class BlocksTable extends Component {
                 <meta name="description" content="Latest blocks committed by validators on Cosmos Hub" />
             </Helmet>
             <Row>
-                <Col md={3} xs={12} className="vertical-align" style={{justifyContent: 'flex-start'}}><h1 className="d-none d-lg-block dark-color mb-0"><T>blocks.latestBlocks</T></h1></Col>
-                <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col>
+                <Col md={3} xs={12} className="vertical-align" style={{justifyContent: 'flex-start'}}><h1 className="d-none d-lg-block dark-color mb-0">{this.props.title || <T>blocks.latestBlocks</T>}</h1></Col>
+                { this.props.showChainStates && <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> }
             </Row>
             <Switch>
                 <Route path="/blocks/:blockId" render={(props)=> <Sidebar 
