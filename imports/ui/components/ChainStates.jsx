@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, Row, Col } from 'reactstrap';
 import numbro from 'numbro';
 import i18n from 'meteor/universe:i18n';
-import Coin from '/both/utils/coins.js'
+import Coin from '/both/utils/coins.js';
 
 const T = i18n.createComponent();
 
@@ -74,7 +74,7 @@ export default class ChainStates extends Component{
             <CardHeader>
                 <Row className="text-nowrap chain-states-wrapper">
                     {/* Check une autre classe d'icons */}
-                    <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons">euro_symbol</i> <b className="ml-2">${this.state.price}</b></small></span></Col>
+                    <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons">euro_symbol</i> <b className="ml-2">€{this.state.price}</b></small></span></Col>
                     <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons">height</i><T>chainStates.height</T>: <b className="ml-2">{this.state.height}</b></small></span></Col>
                     <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons mr-2">access_time</i><T>chainStates.bondedTokens</T>: <b className="ml-2">{this.state.bondedTokens}</b></small></span></Col>
                     <Col xs={4} md="auto"><span><small className="vertical-align"><i className="material-icons mr-2">trending_up</i><T>chainStates.inflation</T>: <b className="ml-2">{this.state.inflation}</b></small></span></Col>

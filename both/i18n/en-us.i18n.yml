@@ -16,7 +16,7 @@ common:
     backToList: 'Back to List'
     information: 'Information'
     time: 'Time'
-    hash: 'Hash'
+    hash: 'Tx Hash'
     more: 'More'
     fullStop: '.'
     searchPlaceholder: 'Search with tx hash / block height / address'
@@ -37,6 +37,7 @@ navbar:
     simChinese: "中文（简）"
     license: 'LICENSE'
     forkMe: 'Fork me!'
+    dashboard: 'Dashboard'
 consensus:
     consensusState: 'Consensus State'
     round: 'Round'

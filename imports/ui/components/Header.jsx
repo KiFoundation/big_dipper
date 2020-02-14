@@ -159,69 +159,80 @@ export default class Header extends Component {
     render() {
         let signedInAddress = getUser();
         return (
-            <Navbar color="primary" dark expand="lg" fixed="top" id="header">
-                <NavbarBrand tag={Link} to="/"><img src="/img/big-dipper.svg" className="img-fluid logo"/> <span className="d-none d-xl-inline-block"><T>navbar.siteName</T>&nbsp;</span><Badge color="secondary"><T>navbar.version</T></Badge> </NavbarBrand>
-                <UncontrolledDropdown className="d-inline text-nowrap">
-                    <DropdownToggle caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle>
-                    {this.state.networks}
-                </UncontrolledDropdown>
-                <SearchBar id="header-search" history={this.props.history} />
-                <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="ml-auto text-nowrap" navbar>
-                        <NavItem>
-                            <NavLink tag={Link} to="/validators"><T>navbar.validators</T></NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={Link} to="/blocks"><T>navbar.blocks</T></NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={Link} to="/transactions"><T>navbar.transactions</T></NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={Link} to="/proposals"><T>navbar.proposals</T></NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={Link} to="/voting-power-distribution"><T>navbar.votingPower</T></NavLink>
-                        </NavItem>
-                        <NavItem id="user-acconut-icon">
-                            {!signedInAddress?<Button className="sign-in-btn" color="link" size="lg" onClick={() => {this.setState({isSignInOpen: true})}}><i className="material-icons">vpn_key</i></Button>:
-                                <span>
-                                    <span className="d-lg-none">
-                                        <i className="material-icons large d-inline">account_circle</i>
-                                        <Link to={`/account/${signedInAddress}`}> {signedInAddress}</Link>
-                                        <Button className="float-right" color="link" size="sm" onClick={this.signOut.bind(this)}><i className="material-icons">exit_to_app</i></Button>
-                                    </span>
-                                    <span className="d-none d-lg-block">
-                                        <i className="material-icons large">account_circle</i>
-                                        <UncontrolledPopover className="d-none d-lg-block" trigger="legacy" placement="bottom" target="user-acconut-icon">
-                                            <PopoverBody>
-                                                <div className="text-center"> 
-                                                <p><T>accounts.signInText</T></p>
-                                                <p><Link className="text-nowrap" to={`/account/${signedInAddress}`}>{signedInAddress}</Link></p>
-                                                <Button className="float-right" color="link" onClick={this.signOut.bind(this)}><i className="material-icons">exit_to_app</i><span> <T>accounts.signOut</T></span></Button>
-                                            </div>
-                                            </PopoverBody>
-                                        </UncontrolledPopover>
-                                    </span>
-                                </span>}
-                            <LedgerModal isOpen={this.state.isSignInOpen} toggle={this.toggleSignIn} refreshApp={this.props.refreshApp} handleLoginConfirmed={this.shouldLogin()?this.handleLoginConfirmed:null}/>
-                        </NavItem>
-                        <NavItem>
-                            <UncontrolledDropdown inNavbar>
-                                <DropdownToggle nav caret>
-                                    <T>navbar.lang</T>
-                                </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem onClick={(e) => this.handleLanguageSwitch('en-US', e)}><T>navbar.english</T></DropdownItem>
-                                    <DropdownItem onClick={(e) => this.handleLanguageSwitch('zh-Hant', e)}><T>navbar.chinese</T></DropdownItem>
-                                    <DropdownItem onClick={(e) => this.handleLanguageSwitch('zh-Hans', e)}><T>navbar.simChinese</T></DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </NavItem>
+            <React.Fragment>
+
+                <Navbar expand="lg" id="header" style={{border: 0, boxShadow: 'none'}}>
+                    {/* <NavbarBrand tag={Link} to="/"><img src="/img/big-dipper.svg" className="img-fluid logo"/> <span className="d-none d-xl-inline-block"><T>navbar.siteName</T>&nbsp;</span><Badge color="secondary"><T>navbar.version</T></Badge> </NavbarBrand> */}
+                    <NavbarBrand tag={Link} to="/"><img src="/img/ki-chain.png" className="img-fluid logo"/></NavbarBrand>
+                    <Nav className="ml-auto">
+                        {/* <UncontrolledDropdown className="d-inline text-nowrap">
+                            <DropdownToggle caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle>
+                            {this.state.networks}
+                        </UncontrolledDropdown> */}
+                        <SearchBar id="header-search" style={{minWidth: 350}} history={this.props.history} />
+                        <NavbarToggler onClick={this.toggle} />
                     </Nav>
-                </Collapse>
-            </Navbar>
+                </Navbar>
+                <Navbar expand="lg" style={{border: 0, boxShadow: 'none'}}>
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="text-nowrap w-100" navbar style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                            <NavItem>
+                                <NavLink className="text-uppercase px-0" tag={Link} to="/"><i className="material-icons mr-2">dashboard</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.dashboard</T></span></NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="text-uppercase px-0" tag={Link} to="/blocks"><i className="material-icons mr-2">grid_on</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.blocks</T></span></NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="text-uppercase px-0" tag={Link} to="/validators"><i class="material-icons mr-2">library_add_check</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.validators</T></span></NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="text-uppercase px-0" tag={Link} to="/transactions"><i class="material-icons mr-2">swap_vert</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.transactions</T></span></NavLink>
+                            </NavItem>
+                            {/* <NavItem>
+                                <NavLink className="text-uppercase" tag={Link} to="/proposals"><T>navbar.proposals</T></NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="text-uppercase" tag={Link} to="/voting-power-distribution"><T>navbar.votingPower</T></NavLink>
+                            </NavItem> */}
+                            {/* <NavItem id="user-acconut-icon">
+                                {!signedInAddress?<Button className="sign-in-btn" color="link" size="lg" onClick={() => {this.setState({isSignInOpen: true})}}><i className="material-icons">vpn_key</i></Button>:
+                                    <span>
+                                        <span className="d-lg-none">
+                                            <i className="material-icons large d-inline">account_circle</i>
+                                            <Link to={`/account/${signedInAddress}`}> {signedInAddress}</Link>
+                                            <Button className="float-right" color="link" size="sm" onClick={this.signOut.bind(this)}><i className="material-icons">exit_to_app</i></Button>
+                                        </span>
+                                        <span className="d-none d-lg-block">
+                                            <i className="material-icons large">account_circle</i>
+                                            <UncontrolledPopover className="d-none d-lg-block" trigger="legacy" placement="bottom" target="user-acconut-icon">
+                                                <PopoverBody>
+                                                    <div className="text-center"> 
+                                                    <p><T>accounts.signInText</T></p>
+                                                    <p><Link className="text-nowrap" to={`/account/${signedInAddress}`}>{signedInAddress}</Link></p>
+                                                    <Button className="float-right" color="link" onClick={this.signOut.bind(this)}><i className="material-icons">exit_to_app</i><span> <T>accounts.signOut</T></span></Button>
+                                                </div>
+                                                </PopoverBody>
+                                            </UncontrolledPopover>
+                                        </span>
+                                    </span>}
+                                <LedgerModal isOpen={this.state.isSignInOpen} toggle={this.toggleSignIn} refreshApp={this.props.refreshApp} handleLoginConfirmed={this.shouldLogin()?this.handleLoginConfirmed:null}/>
+                            </NavItem> */}
+                            {/* <NavItem>
+                                <UncontrolledDropdown inNavbar>
+                                    <DropdownToggle nav caret>
+                                        <T>navbar.lang</T>
+                                    </DropdownToggle>
+                                    <DropdownMenu right>
+                                        <DropdownItem onClick={(e) => this.handleLanguageSwitch('en-US', e)}><T>navbar.english</T></DropdownItem>
+                                        <DropdownItem onClick={(e) => this.handleLanguageSwitch('zh-Hant', e)}><T>navbar.chinese</T></DropdownItem>
+                                        <DropdownItem onClick={(e) => this.handleLanguageSwitch('zh-Hans', e)}><T>navbar.simChinese</T></DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
+                            </NavItem> */}
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </React.Fragment>
         );
     }
 }
