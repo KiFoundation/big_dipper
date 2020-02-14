@@ -22,7 +22,7 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink as RouterNavLink } from 'react-router-dom';
 import SearchBar from './SearchBar.jsx';
 import i18n from 'meteor/universe:i18n';
 import LedgerModal from '../ledger/LedgerModal.jsx';
@@ -160,33 +160,38 @@ export default class Header extends Component {
         let signedInAddress = getUser();
         return (
             <React.Fragment>
-
-                <Navbar expand="lg" id="header" style={{border: 0, boxShadow: 'none'}}>
+                <Navbar expand="lg" id="header" className="px-0" style={{border: 0, boxShadow: 'none'}}>
                     {/* <NavbarBrand tag={Link} to="/"><img src="/img/big-dipper.svg" className="img-fluid logo"/> <span className="d-none d-xl-inline-block"><T>navbar.siteName</T>&nbsp;</span><Badge color="secondary"><T>navbar.version</T></Badge> </NavbarBrand> */}
                     <NavbarBrand tag={Link} to="/"><img src="/img/ki-chain.png" className="img-fluid logo"/></NavbarBrand>
                     <Nav className="ml-auto">
-                        {/* <UncontrolledDropdown className="d-inline text-nowrap">
-                            <DropdownToggle caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle>
-                            {this.state.networks}
-                        </UncontrolledDropdown> */}
-                        <SearchBar id="header-search" style={{minWidth: 350}} history={this.props.history} />
-                        <NavbarToggler onClick={this.toggle} />
+                        <NavItem>
+                            <SearchBar style={{minWidth: 250}} id="header-search" history={this.props.history} />
+                        </NavItem>
+                        <NavItem className="vertical-align">
+                            <UncontrolledDropdown className="d-inline text-nowrap">
+                                <DropdownToggle className="network-name" caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle>
+                                {this.state.networks}
+                            </UncontrolledDropdown>
+                        </NavItem>
+                        <NavItem>
+                            <NavbarToggler onClick={this.toggle} />
+                        </NavItem>
                     </Nav>
                 </Navbar>
-                <Navbar expand="lg" style={{border: 0, boxShadow: 'none'}}>
+                <Navbar id="header-nav" expand="lg" className="px-0 pb-4" style={{border: 0, boxShadow: 'none'}}>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="text-nowrap w-100" navbar style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={Link} to="/"><i className="material-icons mr-2">dashboard</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.dashboard</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/"><i className="material-icons mr-2">dashboard</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.dashboard</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={Link} to="/blocks"><i className="material-icons mr-2">grid_on</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.blocks</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/blocks"><i className="material-icons mr-2">grid_on</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.blocks</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={Link} to="/validators"><i class="material-icons mr-2">library_add_check</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.validators</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/validators"><i class="material-icons mr-2">library_add_check</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.validators</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={Link} to="/transactions"><i class="material-icons mr-2">swap_vert</i><span style={{color: '#444', fontWeight: 800}}><T>navbar.transactions</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/transactions"><i class="material-icons mr-2">swap_vert</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.transactions</T></span></NavLink>
                             </NavItem>
                             {/* <NavItem>
                                 <NavLink className="text-uppercase" tag={Link} to="/proposals"><T>navbar.proposals</T></NavLink>

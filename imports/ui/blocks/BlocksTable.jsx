@@ -81,7 +81,7 @@ export default class BlocksTable extends Component {
                 <meta name="description" content="Latest blocks committed by validators on Cosmos Hub" />
             </Helmet>
             <Row>
-                <Col md={3} xs={12}><h1 className="d-none d-lg-block"><T>blocks.latestBlocks</T></h1></Col>
+                <Col md={3} xs={12} className="vertical-align" style={{justifyContent: 'flex-start'}}><h1 className="d-none d-lg-block dark-color mb-0"><T>blocks.latestBlocks</T></h1></Col>
                 <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col>
             </Row>
             <Switch>
@@ -100,7 +100,7 @@ export default class BlocksTable extends Component {
                 >
                 </Sidebar>} />
             </Switch>
-            <Container fluid id="block-table">
+            <Container fluid id="block-table" className="mt-4 pt-1">
                 <HeaderRecord />
                 <Blocks limit={this.state.limit} />
             </Container>

@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { Input, InputGroup, InputGroupAddon, Button } from 'reactstrap';
+import { Input, InputGroup, InputGroupAddon, Button, InputGroupText } from 'reactstrap';
 
 export default class SearchBar extends Component {
     constructor(props) {
@@ -55,9 +55,11 @@ export default class SearchBar extends Component {
     }
 
     render(){
-        return <InputGroup style={this.props.style} className={(this.props.mobile)?'d-lg-none':'d-none d-lg-flex'} id={this.props.id}>
+        return (
+        <InputGroup style={this.props.style} className={(this.props.mobile)?'d-lg-none':'d-none d-lg-flex'} id={this.props.id}>
             <Input id="queryString" value={this.state.queryString} onChange={this.handleInput} placeholder={i18n.__('common.searchPlaceholder')} onKeyDown={this.handleSearch}/>
             {(this.props.mobile)?<InputGroupAddon addonType="append"><Button><i className="material-icons" onClick={this.handleMobileSearch}>search</i></Button></InputGroupAddon>:''}
         </InputGroup>
+        );
     }
 }
