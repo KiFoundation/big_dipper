@@ -188,10 +188,10 @@ export default class Header extends Component {
                                 <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/blocks"><i className="material-icons mr-2">grid_on</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.blocks</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/validators"><i class="material-icons mr-2">library_add_check</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.validators</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/validators"><i className="material-icons mr-2">library_add_check</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.validators</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/transactions"><i class="material-icons mr-2">swap_vert</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.transactions</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/transactions"><i className="material-icons mr-2">swap_vert</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.transactions</T></span></NavLink>
                             </NavItem>
                             {/* <NavItem>
                                 <NavLink className="text-uppercase" tag={Link} to="/proposals"><T>navbar.proposals</T></NavLink>
