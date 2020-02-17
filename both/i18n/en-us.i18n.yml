@@ -23,6 +23,7 @@ common:
     cancel: 'Cancel'
     retry: 'Retry'
     rewards: 'Rewards'
+    seeMore: 'See more'
 navbar:
     siteName: 'The Big Dipper'
     version: 'beta'

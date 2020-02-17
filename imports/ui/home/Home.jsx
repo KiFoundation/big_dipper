@@ -41,7 +41,7 @@ export default class Home extends Component{
                 </Sidebar>} />
             </Switch> */}
             <Container fluid id="block-table" className="mt-4 pt-1 px-0">
-                <Blocks showChainStates={false} title={<T>blocks.blocks</T>} limit={10} />
+                <Blocks history={this.props.history} showChainStates={false} title={<T>blocks.blocks</T>} limit={10} />
             </Container>
             {/* <Row>
                 <Col md={3} xs={12}><h1 className="dark-color">{Meteor.settings.public.chainName}</h1></Col>

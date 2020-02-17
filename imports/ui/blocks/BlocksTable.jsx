@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import HeaderRecord from './HeaderRecord.jsx';
 import Blocks from '/imports/ui/blocks/ListContainer.js'
 import { LoadMore } from '../components/LoadMore.jsx';
@@ -21,10 +21,11 @@ export default class BlocksTable extends Component {
         };
 
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+        this.handleShowMore = this.handleShowMore.bind(this);
     }
 
     static defaultProps = {
-        showChainStates: true
+        showChainStates: true,
     }
 
     isBottom(el) {
@@ -68,6 +69,13 @@ export default class BlocksTable extends Component {
         }
     }
 
+    handleShowMore() {
+        let timer = Meteor.setTimeout(() => {
+            this.props.history.push('/blocks');
+            Meteor.clearTimeout(timer);
+        },100)
+    }
+
     onSetSidebarOpen(open) {
         // console.log(open);
         this.setState({ sidebarOpen: open }, (error, result) =>{
@@ -87,7 +95,15 @@ export default class BlocksTable extends Component {
                 <meta name="description" content="Latest blocks committed by validators on Cosmos Hub" />
             </Helmet>
             <Row>
-                <Col md={3} xs={12} className="vertical-align justify-start"><h1 className="d-none d-lg-block dark-color mb-0">{this.props.title || <T>blocks.latestBlocks</T>}</h1></Col>
+                <Col className="vertical-align justify-start">
+                    <h2 className="d-none d-lg-block dark-color mb-0 font-800">{this.props.title || <T>blocks.latestBlocks</T>}</h2>
+                    { !this.props.showChainStates && <Button className="ml-auto normal-shadow" onClick={this.handleShowMore}>
+                            <span className="dark-color text-normalize font-800 vertical-align translate-none">
+                                <i className="material-icons light-color mr-2">add_circle</i><T>common.seeMore</T>
+                            </span>
+                        </Button>
+                    }
+                </Col>
                 { this.props.showChainStates && <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> }
             </Row>
             <Switch>

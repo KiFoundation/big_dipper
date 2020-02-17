@@ -160,7 +160,7 @@ export default class Header extends Component {
         let signedInAddress = getUser();
         return (
             <React.Fragment>
-                <Navbar expand="lg" id="header" className="px-0" style={{border: 0, boxShadow: 'none'}}>
+                <Navbar expand="lg" id="header" className="px-0 mb-3" style={{border: 0, boxShadow: 'none'}}>
                     {/* <NavbarBrand tag={Link} to="/"><img src="/img/big-dipper.svg" className="img-fluid logo"/> <span className="d-none d-xl-inline-block"><T>navbar.siteName</T>&nbsp;</span><Badge color="secondary"><T>navbar.version</T></Badge> </NavbarBrand> */}
                     <NavbarBrand tag={Link} to="/"><img src="/img/ki-chain.png" className="img-fluid logo"/></NavbarBrand>
                     <Nav className="ml-auto">
@@ -182,16 +182,16 @@ export default class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="text-nowrap w-100" navbar style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/"><i className="material-icons mr-2">dashboard</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.dashboard</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/"><i className="material-icons mr-2">dashboard</i><span className="link-span font-500"><T>navbar.dashboard</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/blocks"><i className="material-icons mr-2">grid_on</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.blocks</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/blocks"><i className="material-icons mr-2">grid_on</i><span className="link-span font-500"><T>navbar.blocks</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/validators"><i className="material-icons mr-2">library_add_check</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.validators</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/validators"><i className="material-icons mr-2">library_add_check</i><span className="link-span font-500"><T>navbar.validators</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/transactions"><i className="material-icons mr-2">swap_vert</i><span className="link-span" style={{fontWeight: 800}}><T>navbar.transactions</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/transactions"><i className="material-icons mr-2">swap_vert</i><span className="link-span font-500"><T>navbar.transactions</T></span></NavLink>
                             </NavItem>
                             {/* <NavItem>
                                 <NavLink className="text-uppercase" tag={Link} to="/proposals"><T>navbar.proposals</T></NavLink>
