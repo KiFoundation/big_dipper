@@ -74,8 +74,8 @@ export default class ChainStatesBlocks extends Component{
         return (
             <Row>
                 <Col>
-                    <Card className="d-lg-inline-block w-100" style={{backgroundColor: '#ffffff', boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
-                        <CardHeader>
+                    <Card className="d-lg-inline-block w-100 bg-white" style={{boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
+                        <CardHeader className="bg-white">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
@@ -92,8 +92,8 @@ export default class ChainStatesBlocks extends Component{
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="d-lg-inline-block w-100" style={{backgroundColor: '#ffffff', boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
-                        <CardHeader>
+                    <Card className="d-lg-inline-block w-100 bg-white" style={{boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
+                        <CardHeader className="bg-white">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
@@ -110,8 +110,8 @@ export default class ChainStatesBlocks extends Component{
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="d-lg-inline-block w-100" style={{backgroundColor: '#ffffff', boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
-                        <CardHeader>
+                    <Card className="d-lg-inline-block w-100 bg-white" style={{boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
+                        <CardHeader className="bg-white">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
@@ -128,8 +128,8 @@ export default class ChainStatesBlocks extends Component{
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="d-lg-inline-block w-100" style={{backgroundColor: '#ffffff', boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
-                        <CardHeader>
+                    <Card className="d-lg-inline-block w-100 bg-white" style={{boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
+                        <CardHeader className="bg-white">
                             <Row className="text-nowrap chain-states-wrapper dark-color">
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">

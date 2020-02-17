@@ -19,7 +19,7 @@ common:
     hash: 'Tx Hash'
     more: 'More'
     fullStop: '.'
-    searchPlaceholder: 'Search with tx hash / block height / address'
+    searchPlaceholder: 'Address, Block Height, Tx hash'
     cancel: 'Cancel'
     retry: 'Retry'
     rewards: 'Rewards'
@@ -117,6 +117,7 @@ validators:
     amount: 'Amount'
 blocks:
     block: 'Block'
+    blocks: 'Blocks'
     proposer: 'Proposer'
     latestBlocks: 'Latest blocks'
     noBlock: 'No block.'
