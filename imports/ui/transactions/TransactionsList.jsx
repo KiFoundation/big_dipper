@@ -89,7 +89,7 @@ export default class Transactions extends Component{
                 <meta name="description" content="See what is happening on Cosmos Hub" />
             </Helmet>
             <Row>
-                <Col md={3} xs={12}><h1 className="d-none d-lg-block"><T>transactions.transactions</T></h1></Col>
+                <Col md={3} xs={12} className="vertical-align justify-start"><h1 className="d-none d-lg-block dark-color"><T>transactions.transactions</T></h1></Col>
                 <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col>
             </Row>
             <Switch>

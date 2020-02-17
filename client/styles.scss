@@ -26,7 +26,7 @@ body {
 }
 
 .list-border {
-  border-radius: 5;
+  border-radius: 5px;
 }
 
 .justify-start, .justify-start.vertical-align, .vertical-align+.justify-start {
@@ -77,6 +77,10 @@ body {
 .vertical-middle{
   display: flex;
   align-items: center;;
+}
+
+.border-none {
+  border: 0;
 }
 
 .bg-white{
