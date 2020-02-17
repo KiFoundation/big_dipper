@@ -61,9 +61,9 @@ export default class BlocksTable extends Component {
     };
 
     componentDidUpdate(prevProps){
-        if (this.props.location.pathname != prevProps.location.pathname){
+        if (this.props?.location?.pathname != prevProps?.location?.pathname){
             this.setState({
-                sidebarOpen: (this.props.location.pathname.split("/blocks/").length == 2)
+                sidebarOpen: (this.props?.location?.pathname?.split("/blocks/")?.length == 2)
             })
         }
     }
@@ -87,7 +87,7 @@ export default class BlocksTable extends Component {
                 <meta name="description" content="Latest blocks committed by validators on Cosmos Hub" />
             </Helmet>
             <Row>
-                <Col md={3} xs={12} className="vertical-align" style={{justifyContent: 'flex-start'}}><h1 className="d-none d-lg-block dark-color mb-0">{this.props.title || <T>blocks.latestBlocks</T>}</h1></Col>
+                <Col md={3} xs={12} className="vertical-align justify-start"><h1 className="d-none d-lg-block dark-color mb-0">{this.props.title || <T>blocks.latestBlocks</T>}</h1></Col>
                 { this.props.showChainStates && <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> }
             </Row>
             <Switch>

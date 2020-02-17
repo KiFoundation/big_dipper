@@ -81,36 +81,41 @@ export default class Validators extends Component{
                 <meta name="description" content="Here is a list of Cosmos Validators" />
             </Helmet>
             <Row>
-                <Col lg={3} xs={12}><h1 className="d-none d-lg-block">{title}</h1></Col>
-                <Col lg={9} xs={12} className="text-lg-right"><ChainStates /></Col>
+                <Col lg={4} xs={12} className="vertical-align justify-start"><h1 className="d-none d-lg-block mb-0 dark-color">{title}</h1></Col>
+                <Col lg={8} xs={12} className="text-lg-right"><ChainStates /></Col>
             </Row>
-            <Nav pills className="status-switch">
-                <NavItem>
-                    <NavLink tag={Link} to="/validators" active={(this.props.match.url == "/validators")}><T>validators.navActive</T></NavLink>
+            <Nav pills className="status-switch filter-pills mt-4 pt-1">
+                <NavItem className="ml-auto">
+                    <NavLink
+                        style={{borderTopRightRadius: 0, borderBottomRightRadius: 0}}
+                        tag={Link}
+                        to="/validators"
+                        active={(this.props.match.url == "/validators")}><T>validators.navActive</T>
+                    </NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink tag={Link} to="/validators/inactive"
+                        style={{borderTopLeftRadius: 0, borderBottomLeftRadius: 0}}
                         active={(this.props.match.url.indexOf("inactive")>0)}>
                         <T>validators.navInactive</T>
                     </NavLink>
                 </NavItem>
             </Nav>
-            <p className="lead">{desc}</p>
+            {/* <p className="lead">{desc}</p> */}
             <Row className="validator-list">
                 <Col md={12}>
-                    <Card body>
-                        <Row className="header text-nowrap">
-                            <Col className="d-none d-md-block counter" md={1}>&nbsp;</Col>
-                            <Col className="moniker" md={2} onClick={(e) => this.toggleDir('moniker',e)}><i className="material-icons">perm_contact_calendar</i> <span className="d-inline-block d-md-none d-lg-inline-block"><T>validators.moniker</T></span> {renderToggleIcon(this.state.monikerDir)} </Col>
-                            <Col className="voting-power" md={3} lg={2} onClick={(e) => this.toggleDir('votingPower',e)}><i className="material-icons">power</i> <span className="d-inline-block d-md-none d-lg-inline-block"><T>common.votingPower</T></span> {renderToggleIcon(this.state.votingPowerDir)} </Col>
-                            <Col className="self-delegation" md={1} onClick={(e) => this.toggleDir('selfDel',e)}><i className="material-icons">equalizer</i> <span className="d-md-none d-lg-inline-block"><T>validators.selfPercentage</T></span> {renderToggleIcon(this.state.selfDelDir==1)} </Col>
-                            {(!this.props.inactive)?<Col className="commission" md={1} lg={2} onClick={(e) => this.toggleDir('commission',e)}><i className="material-icons">call_split</i> <span className="d-inline-block d-md-none d-lg-inline-block"><T>validators.commission</T></span> {renderToggleIcon(this.state.commissionDir==1)}</Col>:''}
-                            {(!this.props.inactive)?<Col className="uptime" md={2} lg={3} onClick={(e) => this.toggleDir('uptime',e)}><i className="material-icons">flash_on</i> <span className="d-inline-block d-md-none d-lg-inline-block"><T>validators.uptime</T> ({Meteor.settings.public.uptimeWindow} <i className="fas fa-cube"></i>)</span> {renderToggleIcon(this.state.uptimeDir==1)}</Col>:''}
-                            {(this.props.inactive)?<Col className="last-seen" md={3}><i className="far fa-clock"></i> <span className="d-md-none d-lg-inline-block"><T>validators.lastSeen</T> (UTC)</span></Col>:''}
-                            {(this.props.inactive)?<Col className="bond-status d-none d-md-block" md={1} onClick={(e) => this.toggleDir('status',e)}><i className="material-icons">toggle_on</i> <span className="d-md-none d-lg-inline-block"><T>validators.status</T></span> {renderToggleIcon(this.state.statusDir)} </Col>:''}
-                            {(this.props.inactive)?<Col className="jail-status d-none d-md-block" md={1} onClick={(e) => this.toggleDir('jailed',e)}><i className="material-icons">lock</i> <span className="d-md-none d-lg-inline-block"><T>validators.jailed</T></span> {renderToggleIcon(this.state.jailedDir)} </Col>:''}
-                        </Row>
-                    </Card>
+                    <Row className="header text-nowrap mb-3 mt-4" style={{border: 0}}>
+                        <Col className="vertical-middle d-none d-md-block counter" md={1}>&nbsp;</Col>
+                        <Col className="vertical-middle moniker" md={2} onClick={(e) => this.toggleDir('moniker',e)}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color"><T>validators.moniker</T></span> {renderToggleIcon(this.state.monikerDir)} </Col>
+                        <Col className="vertical-middle voting-power" md={3} lg={2} onClick={(e) => this.toggleDir('votingPower',e)}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color"><T>common.votingPower</T></span> {renderToggleIcon(this.state.votingPowerDir)} </Col>
+                        <Col className="vertical-middle self-delegation" md={1} onClick={(e) => this.toggleDir('selfDel',e)}><span className="d-md-none d-lg-inline-block text-uppercase dark-color"><T>validators.selfPercentage</T></span> {renderToggleIcon(this.state.selfDelDir==1)} </Col>
+                        {(!this.props.inactive)?<Col className="vertical-middle commission" md={1} lg={2} onClick={(e) => this.toggleDir('commission',e)}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color"><T>validators.commission</T></span> {renderToggleIcon(this.state.commissionDir==1)}</Col>:''}
+                        {/* {(!this.props.inactive)?<Col className="vertical-middle uptime" md={2} lg={3} onClick={(e) => this.toggleDir('uptime',e)}><span className="d-inline-block d-md-none d-lg-inline-block "><T>validators.uptime</T> ({Meteor.settings.public.uptimeWindow} <i className="fas fa-cube"></i>)</span> {renderToggleIcon(this.state.uptimeDir==1)}</Col>:''} */}
+                        {(!this.props.inactive)?<Col className="vertical-middle uptime" md={2} lg={3} onClick={(e) => this.toggleDir('uptime',e)}><span className="d-inline-block d-md-none d-lg-inline-block text-uppercase dark-color"><T>validators.uptime</T> </span> {renderToggleIcon(this.state.uptimeDir==1)}</Col>:''}
+                        {(this.props.inactive)?<Col className="vertical-middle last-seen" md={3}><span className="d-md-none d-lg-inline-block text-uppercase dark-color"><T>validators.lastSeen</T> (UTC)</span></Col>:''}
+                        {(this.props.inactive)?<Col className="vertical-middle bond-status" md={1} onClick={(e) => this.toggleDir('status',e)}><span className="d-md-none d-lg-inline-block text-uppercase dark-color"><T>validators.status</T></span> {renderToggleIcon(this.state.statusDir)} </Col>:''}
+                        {(this.props.inactive)?<Col className="vertical-middle jail-status" md={1} onClick={(e) => this.toggleDir('jailed',e)}><span className="d-md-none d-lg-inline-block text-uppercase dark-color"><T>validators.jailed</T></span> {renderToggleIcon(this.state.jailedDir)} </Col>:''}
+                    </Row>
                     {(this.props.inactive)?<List
                         inactive={this.props.inactive}
                         monikerDir={this.state.monikerDir}

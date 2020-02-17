@@ -25,6 +25,25 @@ body {
   }
 }
 
+.list-border {
+  border-radius: 5;
+}
+
+.justify-start, .justify-start.vertical-align, .vertical-align+.justify-start {
+  justify-content: flex-start;
+}
+
+.filter-pills.nav-pills .nav-link.active {
+  color: $secondary;
+  background: transparent;
+  border: 1px solid $secondary;
+}
+
+.filter-pills.nav-pills .nav-link {
+  color: grey;
+  background: #ffffff;
+}
+
 #header-search {
   .form-control:focus {
     box-shadow: none !important;
@@ -53,6 +72,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.vertical-middle{
+  display: flex;
+  align-items: center;;
 }
 
 .bg-white{
