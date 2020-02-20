@@ -51,7 +51,11 @@ export default class ChainStatesBlocks extends Component{
                 this.setState({ height: this.props.chainStates.height });
             }
             if (this.props.chainStates.bondedTokens !== prevProps.chainStates.bondedTokens) {
-                this.setState({ bondedTokens: this.props.chainStates.bondedTokens });
+                // this.setState({ bondedTokens: this.props.chainStates.bondedTokens });
+                this.setState({
+                    totalSupply: this.props.chainStates.totalSupply,
+                    bondedTokens: numbro(this.props.chainStates.bondedTokens/this.props.chainStates.totalSupply).format("0.00%")
+                });
             }
             if (this.props.chainStates.communityPool){
                 this.setState({
@@ -81,7 +85,7 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <T>chainStates.price</T>:
+                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.price</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">
@@ -99,7 +103,7 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <T>chainStates.height</T>:
+                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.height</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">
@@ -117,7 +121,7 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <T>chainStates.bondedTokens</T>:
+                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.bondedTokens</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">
@@ -136,7 +140,7 @@ export default class ChainStatesBlocks extends Component{
                                 <Col xs={4} md="auto">
                                     <small className="text-uppercase light-color">
                                         <b>
-                                        <T>chainStates.inflation</T>:
+                                        <span className="vertical-align" style={{fontSize: 13}}><T>chainStates.inflation</T><span className="rounded-icon ml-1" style={{ height: 17, width: 17 }}><i class="fas fa-question" style={{fontSize: 8}}></i></span></span>
                                         </b>
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">

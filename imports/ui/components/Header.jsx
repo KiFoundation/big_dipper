@@ -18,6 +18,7 @@ import {
     UncontrolledDropdown,
     UncontrolledPopover,
     PopoverBody,
+    Dropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem
@@ -48,7 +49,8 @@ export default class Header extends Component {
         this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false,
-            networks: ""
+            networks: "",
+            dropdownOpen: false
         };
     }
 
@@ -71,7 +73,7 @@ export default class Header extends Component {
     }
 
     componentDidMount(){
-        let url = Meteor.settings.public.networks
+        let url = Meteor.settings.public.networks;
         if (!url)
             return
         try{
@@ -167,25 +169,33 @@ export default class Header extends Component {
                         <NavItem>
                             <SearchBar style={{minWidth: 250}} id="header-search" history={this.props.history} />
                         </NavItem>
-                        <NavItem className="vertical-align">
-                            <UncontrolledDropdown className="d-inline text-nowrap">
-                                <DropdownToggle className="network-name" caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle>
-                                {this.state.networks}
-                            </UncontrolledDropdown>
+                        <NavItem className="ml-3 vertical-align">
+                            <div className="ml-3">
+                                <Dropdown isOpen={this.state.dropdownOpen} toggle={() => this.setState({ dropdownOpen: !this.state.dropdownOpen})} className="d-inline text-nowrap">
+                                    {/* <DropdownToggle className="network-name" caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle> */}
+                                    {/* {this.state.networks} */}
+                                    <DropdownToggle style={{boxShadow: 'none', border: '1px solid #eaeaea'}}>
+                                        <span className="font-800 dark-color mr-2 text-capitalize">Network</span> <span className="font-800 primary-color text-capitalize mr-4">Testnet</span> <i style={{opacity: 0.3}} className={`fas ${this.state.dropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+                                    </DropdownToggle>
+                                    <DropdownMenu className="w-100">
+                                        <DropdownItem>Testnet</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </div>
                         </NavItem>
                         <NavItem>
                             <NavbarToggler onClick={this.toggle} />
                         </NavItem>
                     </Nav>
                 </Navbar>
-                <Navbar id="header-nav" expand="lg" className="px-0 pb-4" style={{border: 0, boxShadow: 'none'}}>
+                <Navbar id="header-nav" expand="lg" className="px-0 pb-5" style={{border: 0, boxShadow: 'none'}}>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="text-nowrap w-100" navbar style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                             <NavItem>
                                 <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/"><i className="material-icons mr-2">dashboard</i><span className="link-span font-500"><T>navbar.dashboard</T></span></NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/blocks"><i className="material-icons mr-2">grid_on</i><span className="link-span font-500"><T>navbar.blocks</T></span></NavLink>
+                                <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/blocks"><i class="material-icons mr-2 fas fa-cubes"></i><span className="link-span font-500"><T>navbar.blocks</T></span></NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="text-uppercase px-0" tag={RouterNavLink} activeClassName="link-active" exact to="/validators"><i className="material-icons mr-2">library_add_check</i><span className="link-span font-500"><T>navbar.validators</T></span></NavLink>

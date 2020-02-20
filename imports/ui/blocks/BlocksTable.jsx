@@ -124,7 +124,7 @@ export default class BlocksTable extends Component {
             </Switch>
             <Container fluid id="block-table" className="mt-4 pt-1">
                 <HeaderRecord />
-                <Blocks limit={this.state.limit} />
+                <Blocks history={this.props.history} limit={this.state.limit} />
             </Container>
             <LoadMore show={this.state.loadmore} />
         </div>

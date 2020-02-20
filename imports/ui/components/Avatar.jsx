@@ -5,7 +5,7 @@ export default class Avatar extends React.Component {
     }
 
     getProfileUrl() {
-        return this.props.profileUrl || "https://ui-avatars.com/api/?rounded=true&size=128&name="+this.props.moniker+"&color=fff&background=aaa"
+        return this.props.profileUrl || "https://ui-avatars.com/api/?rounded=true&size=128&name="+this.props.moniker+"&color=fff&background=043bea"
     }
     getColourHex(address){
         // let hex, i;

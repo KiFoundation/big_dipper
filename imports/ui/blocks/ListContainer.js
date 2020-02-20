@@ -8,6 +8,7 @@ import Blocks from './List.jsx';
 export default BlocksContainer = withTracker((props) => {
     let heightHandle;
     let loading = true;
+    let history = props.history;
 
     if (Meteor.isClient){
         heightHandle = Meteor.subscribe('blocks.height', props.limit);
@@ -32,6 +33,7 @@ export default BlocksContainer = withTracker((props) => {
     return {
         loading,
         blocksExist,
+        history,
         blocks: blocksExist ? blocks : {}
     };
 })(Blocks);

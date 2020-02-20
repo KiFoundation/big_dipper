@@ -48,7 +48,6 @@ export default class Home extends Component{
                 <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col>
             </Row> */}
             {/* <Consensus /> */}
-            {/* <ChainStatus /> */}
             {/* <Row>
                 <Col md={6}>
                     <TopValidators />

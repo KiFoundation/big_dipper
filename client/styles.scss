@@ -35,8 +35,20 @@ body {
   font-weight: 800;
 }
 
+.list-title{
+  font-size: 15px;
+}
+
+.block-info.block-info-custom:hover{
+  box-shadow: $normal-shadow;
+}
+
 .text-normalize{
   text-transform: initial;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 .list-border, .card-header.list-border {
@@ -143,7 +155,12 @@ body {
   transform: initial;
 }
 
-.nav-link.link-active .link-span{
+#header-nav .nav-link{
+  padding-bottom: 0;
+  border-bottom: 2px solid transparent;
+}
+
+#header-nav .nav-link.link-active,#header-nav .nav-link:hover{
   border-bottom: 2px solid $primary;
 }
 
