@@ -90,7 +90,7 @@ export default class AccountTooltip extends Account{
     render(){
         return [
             <span ref={this.ref} key='link'>
-                <Link to={this.state.address}>{this.userIcon()}{this.state.moniker}</Link>
+                <Link className="primary-color font-800" to={this.state.address}>{this.userIcon()}{this.state.moniker}</Link>
             </span>,
             this.renderDetailTooltip()
         ]

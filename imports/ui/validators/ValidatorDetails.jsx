@@ -16,11 +16,11 @@ export default class ValidatorDetails extends Component{
     render() {
         return <div>
             <Row>
-            <Col lg={3} xs={12}><h1 className="d-none d-lg-block"><T>validators.validatorDetails</T></h1></Col>
+            <Col lg={3} xs={12} className="vertical-align justify-start"><h2 className="d-none d-lg-block dark-color font-800 mb-0"><T>validators.validatorDetails</T></h2></Col>
                 <Col lg={9} xs={12} className="text-lg-right"><ChainStates /></Col>
           </Row>
             <Row>
-                <Col md={12}>
+                <Col md={12} className="mt-5 pt-1">
                     <Switch>
                         <Route exact path="/(validator|validators)/:address/missed/blocks" render={(props) => <MissedBlocks {...props} type='voter' />} />
                         <Route exact path="/(validator|validators)/:address/missed/precommits" render={(props) => <MissedBlocks {...props} type='proposer' />} />

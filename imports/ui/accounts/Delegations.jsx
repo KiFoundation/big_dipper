@@ -14,25 +14,21 @@ export default class AccountDelegations extends Component{
     }
 
     render(){
-        let numDelegations = this.props.delegations.length;
-        return <Card>
-            <CardHeader>{(numDelegations > 0)?numDelegations:<T>accounts.no</T>} <T>accounts.delegation</T>{(numDelegations>1)?<T>accounts.plural</T>:''}</CardHeader>
-            {(numDelegations > 0)?<CardBody className="list overflow-auto">
-                <Container fluid>
-                    <Row className="header text-nowrap d-none d-lg-flex">
-                        <Col xs={6} md={4}><i className="fas fa-at"></i> <span><T>accounts.validators</T></span></Col>
-                        <Col xs={3} md={4}><i className="fas fa-piggy-bank"></i> <span><T>accounts.shares</T></span></Col>
-                        <Col xs={3} md={4}><i className="fas fa-wallet"></i> <span><T>{Coin.StakingDenomPlural}</T></span></Col>
+        return (
+            <Container fluid>
+                <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}}>
+                    <Col xs={6} md={4}><span className="text-uppercase dark-color font-500"><T>accounts.validators</T></span></Col>
+                    <Col xs={3} md={4}><span className="text-uppercase dark-color font-500"><T>accounts.shares</T></span></Col>
+                    <Col xs={3} md={4}><span className="text-uppercase dark-color font-500"><T>{Coin.StakingDenomPlural}</T></span></Col>
+                </Row>
+                {this.props.delegations.sort((b, a) => (a.balance - b.balance)).map((d, i) => {
+                    return <Row key={i} className="delegation-info bg-white my-2 py-3 list-border">
+                        <Col xs={6} md={4} className="text-nowrap overflow-auto primary-color font-800"><AccountTooltip address={d.validator_address} /></Col>
+                        <Col xs={3} md={4}>{numbro(d.shares).format("0,0")}</Col>
+                        <Col xs={3} md={4}>{new Coin(d.balance).stakeString()}</Col>
                     </Row>
-                    {this.props.delegations.sort((b, a) => (a.balance - b.balance)).map((d, i) => {
-                        return <Row key={i} className="delegation-info">
-                            <Col xs={6} md={4} className="text-nowrap overflow-auto"><AccountTooltip address={d.validator_address} /></Col>
-                            <Col xs={3} md={4}>{numbro(d.shares).format("0,0")}</Col>
-                            <Col xs={3} md={4}>{new Coin(d.balance).stakeString()}</Col>
-                        </Row>
-                    })}
-                </Container>
-            </CardBody>:''}
-        </Card>
+                })}
+            </Container>
+        );
     }
 }

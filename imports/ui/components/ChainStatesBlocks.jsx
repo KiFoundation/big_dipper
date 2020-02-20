@@ -16,7 +16,8 @@ export default class ChainStatesBlocks extends Component{
             let data = {}
             if (this.props.chainStates) {
                 data.height = this.props?.chainStates?.height || null;
-                data.bondedTokens = Math.pow(this.props?.chainStates?.bondedTokens) || null;
+                // data.bondedTokens = this.props?.chainStates?.bondedTokens || null;
+                data.bondedTokens = this.props?.chainStates?.bondedTokens || null;
                 data.price = 0.035;
             }
             if (this.props.chainStates.communityPool){
@@ -121,6 +122,7 @@ export default class ChainStatesBlocks extends Component{
                                     </small>
                                     <h3 className="mt-3 dark-color d-block font-weight-bold">
                                         {this.state.bondedTokens}
+                                        {/* {numbro(this.state?.bondedTokens/this.props?.chainStates?.totalSupply).format("0.00%")} */}
                                     </h3>
                                 </Col>
                             </Row>

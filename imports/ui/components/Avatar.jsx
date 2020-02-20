@@ -30,7 +30,7 @@ export default class Avatar extends React.Component {
 
     render() {
         return (
-            <img src={this.getProfileUrl()} alt={this.props.moniker} className={this.props.list?'moniker-avatar-list img-fluid rounded-circle':'img-fluid rounded-circle'} />
+            <img src={this.getProfileUrl()} alt={this.props.moniker} style={this.props.style} className={this.props.list?'moniker-avatar-list img-fluid rounded-circle':'img-fluid rounded-circle'} />
         );
     }
 }

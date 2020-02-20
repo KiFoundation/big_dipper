@@ -5,6 +5,7 @@
 $primary: #043bea;
 $secondary: #9a78f7;
 $light: #bcb5d8;
+$secondary-light: #b399f8;
 $dark: #2d1d67;
 $secondary-dark: #444;
 $body-bg-color: #f3f4f7;
@@ -53,7 +54,26 @@ body {
 .filter-pills.nav-pills .nav-link.active {
   color: $secondary;
   background: transparent;
-  border: 1px solid $secondary;
+  border: 2px solid $secondary;
+  font-weight: 600;
+
+  span {
+    font-weight: 600;
+  }
+}
+
+.nav-pills.validators-nav-pills{
+  .nav-link{
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    color: grey;
+  }
+  .nav-link.active{
+    background: transparent;
+    color: $secondary;
+    border: 2px solid $secondary;
+    font-weight: 800;
+  }
 }
 
 .normal-shadow {
@@ -63,10 +83,15 @@ body {
 .filter-pills.nav-pills .nav-link {
   color: grey;
   background: #ffffff;
+  border: 2px solid #ffffff;
 }
 
 .card-header-custom{
   box-shadow: $normal-shadow;
+}
+
+.header span.font-500, .header span.font-500 span{
+  font-weight: 500;
 }
 
 #header-search {
@@ -699,10 +724,10 @@ span#network-nav.network-name{
     margin-top: 0.2em;
 
     .block {
-      width: 1.5em;
+      width: 1em;
       height: 1.5em;
       display: inline-block;
-      margin-right: 0.2em;
+      margin-right: 0.4em;
       border: 0.0em solid #bd081c;
       -webkit-box-shadow: 1px 1px 3px 0px rgba(163, 163, 163, 1);
       -moz-box-shadow: 1px 1px 3px 0px rgba(163, 163, 163, 1);
@@ -710,7 +735,7 @@ span#network-nav.network-name{
       border-radius: 3px;
 
       .full {
-        background-color: #009118;
+        background-color: $secondary-light;
         height: 100%;
         width: 100%;
       }

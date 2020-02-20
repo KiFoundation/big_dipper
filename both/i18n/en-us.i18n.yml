@@ -23,6 +23,8 @@ common:
     cancel: 'Cancel'
     retry: 'Retry'
     rewards: 'Rewards'
+    delegations: 'Delegations'
+    unbounding: 'Unbounding'
     seeMore: 'See more'
 navbar:
     siteName: 'The Big Dipper'
@@ -116,6 +118,11 @@ validators:
     lastSyncTime: 'Last sync time'
     delegator: 'Delegator'
     amount: 'Amount'
+    address: 'Address'
+    rewardAddress: 'Reward address'
+    total: 'Total'
+    self: 'Self'
+    others: 'Others'
 blocks:
     block: 'Block'
     blocks: 'Blocks'

@@ -71,8 +71,8 @@ export default class ChainStates extends Component{
         }
     }
     render(){
-        return <Card className="d-lg-inline-block" style={{backgroundColor: '#ffffff', boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
-            <CardHeader>
+        return <Card className="d-lg-inline-block" style={{boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)'}}>
+            <CardHeader className="bg-white">
                 <Row className="text-nowrap chain-states-wrapper dark-color">
                     {/* Check une autre classe d'icons */}
                     <Col xs={4} md="auto"><span><small className="vertical-align"><span className="rounded-icon"><i className="material-icons">euro_symbol</i></span><b><T>chainStates.price</T>:</b> <span className="ml-2">${this.state.price}</span></small></span></Col>

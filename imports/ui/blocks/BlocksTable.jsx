@@ -91,8 +91,8 @@ export default class BlocksTable extends Component {
     render(){
         return <div>
             <Helmet>
-                <title>Latest Blocks on Cosmos Hub | The Big Dipper</title>
-                <meta name="description" content="Latest blocks committed by validators on Cosmos Hub" />
+                <title>Latest Blocks on Ki Chain</title>
+                <meta name="description" content="Latest blocks committed by validators on Ki Chain" />
             </Helmet>
             <Row>
                 <Col className="vertical-align justify-start">
