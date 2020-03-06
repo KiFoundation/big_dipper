@@ -199,6 +199,7 @@ export default class ChainStatus extends React.Component {
                                         {this.props.status.lastDayVotingPower?<DropdownItem onClick={(e) => this.handleSwitchVotingPower("d", e)}><T>chainStatus.lastDay</T></DropdownItem>:''}
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
+                                <span>{this.state.totalSupply}</span>
                                 <CardTitle><T>chainStatus.onlineVotingPower</T> ({this.state.votingPowerText})</CardTitle>
                                 <CardText><span className="display-4 value text-primary">{this.state.votingPower}</span><T percent={numbro(this.state.bondedTokens/this.state.totalSupply).format("0.00%")} totalStakes={numbro(this.state.totalSupply/Coin.StakingFraction).format("0.00a")} denom={Coin.StakingDenom} denomPlural={Coin.StakingDenomPlural}>chainStatus.fromTotalStakes</T></CardText>
                             </Card>

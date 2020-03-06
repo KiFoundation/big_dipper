@@ -14,7 +14,7 @@ export default class TimeStamp extends Component{
         let timezone = moment.tz.guess()
         let time = moment.utc(this.props.time);
         return <span>
-            <span ref={this.ref}>{time.format(format)}</span>
+            <span ref={this.ref}>{time.fromNow()}</span>
             <UncontrolledTooltip placement='bottom' target={this.ref}>
                 {time.tz(timezone).format(format)}
             </UncontrolledTooltip>

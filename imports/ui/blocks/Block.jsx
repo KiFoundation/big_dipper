@@ -49,12 +49,12 @@ export default class Block extends Component{
                 // console.log(this.props.block);
                 let block = this.props.block;
                 let proposer = block.proposer();
-                let moniker = proposer?proposer.description.moniker:'';
-                let profileUrl = proposer?proposer.profile_url:'';
+                let moniker = proposer ? proposer?.description?.moniker : '';
+                let profileUrl = proposer ? proposer?.profile_url : '';
 
                 return <Container id="block">
                     <Helmet>
-                        <title>Block {numbro(block.height).format("0,0")} on Cosmos Hub | The Big Dipper</title>
+                        <title>Block {numbro(block.height).format("0,0")} on Ki Chain</title>
                         <meta name="description" content={"Block details of height "+numbro(block.height).format("0,0")} />
                     </Helmet>
                     <h4><T>blocks.block</T> {numbro(block.height).format("0,0")}</h4>

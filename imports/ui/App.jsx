@@ -76,8 +76,8 @@ class App extends Component {
             // <Router history={history}>
                 <div>
                     {(Meteor.settings.public.gtm)?<GoogleTagManager gtmId={Meteor.settings.public.gtm} />:''}
-                    <RouteHeader refreshApp={this.propagateStateChange}/>
-                    <Container fluid id="main">
+                    <Container id="main" className="pt-3">
+                        <RouteHeader refreshApp={this.propagateStateChange}/>
                         <ToastContainer />
                         <SentryBoundary>
                             <MobileSearchBar />

@@ -5,7 +5,7 @@ export default class Avatar extends React.Component {
     }
 
     getProfileUrl() {
-        return this.props.profileUrl || "https://ui-avatars.com/api/?rounded=true&size=128&name="+this.props.moniker+"&color=fff&background=aaa"
+        return this.props.profileUrl || "https://ui-avatars.com/api/?rounded=true&size=128&name="+this.props.moniker+"&color=fff&background=043bea"
     }
     getColourHex(address){
         // let hex, i;
@@ -30,7 +30,7 @@ export default class Avatar extends React.Component {
 
     render() {
         return (
-            <img src={this.getProfileUrl()} alt={this.props.moniker} className={this.props.list?'moniker-avatar-list img-fluid rounded-circle':'img-fluid rounded-circle'} />
+            <img src={this.getProfileUrl()} alt={this.props.moniker} style={this.props.style} className={this.props.list?'moniker-avatar-list img-fluid rounded-circle':'img-fluid rounded-circle'} />
         );
     }
 }

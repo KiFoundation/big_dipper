@@ -1,13 +1,209 @@
-$forbole-red: #043bea;
-$primary: $forbole-red !default;
-
 @import "materia/variables";
 @import "bootstrap";
 @import "materia/bootswatch";
 
+$primary: #043bea;
+$secondary: #9a78f7;
+$light: #bcb5d8;
+$secondary-light: #b399f8;
+$dark: #2d1d67;
+$secondary-dark: #444;
+$body-bg-color: #f3f4f7;
+$body-color: $dark;
+$normal-shadow: 0 10px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+
 body {
     font-size: inherit !important;
+    background-color: $body-bg-color;
   }
+
+// Added
+#header-nav {
+  a {
+    color: $primary;
+    i {
+      color: $primary;
+    }
+  }
+}
+
+.font-500{
+  font-weight: 500;
+}
+
+.font-800{
+  font-weight: 800;
+}
+
+.list-title{
+  font-size: 15px;
+}
+
+.block-info.block-info-custom:hover{
+  box-shadow: $normal-shadow;
+}
+
+.text-normalize{
+  text-transform: initial;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.list-border, .card-header.list-border {
+  border-radius: 5px;
+}
+
+.translate-none, span.translate-none, span.translate-none span, .translate-none i.material-icons + span{
+  transform: translate(0);
+}
+
+.justify-start, .justify-start.vertical-align, .vertical-align+.justify-start {
+  justify-content: flex-start;
+}
+
+.filter-pills.nav-pills .nav-link.active {
+  color: $secondary;
+  background: transparent;
+  border: 2px solid $secondary;
+  font-weight: 600;
+
+  span {
+    font-weight: 600;
+  }
+}
+
+.nav-pills.validators-nav-pills{
+  .nav-link{
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    color: grey;
+  }
+  .nav-link.active{
+    background: transparent;
+    color: $secondary;
+    border: 2px solid $secondary;
+    font-weight: 800;
+  }
+}
+
+.normal-shadow {
+  box-shadow: $normal-shadow;
+}
+
+.filter-pills.nav-pills .nav-link {
+  color: grey;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.card-header-custom{
+  box-shadow: $normal-shadow;
+}
+
+.header span.font-500, .header span.font-500 span{
+  font-weight: 500;
+}
+
+#header-search {
+  .input-addon-absolute{
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    padding-left: 10px;
+    height: 45px;
+  }
+
+  .form-control {
+    border-radius: 5px;
+    height: 45px;
+    padding-left: 40px;
+    box-shadow: none;
+  }
+
+  .form-control::placeholder {
+    color: $light;
+  }
+
+  .form-control:focus {
+    box-shadow: 0px 0px 2px 2px $secondary;
+    border-color: $secondary !important;
+  }
+}
+
+.vertical-align{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vertical-middle{
+  display: flex;
+  align-items: center;;
+}
+
+.border-none {
+  border: 0;
+}
+
+.bg-white{
+  background: #ffffff;
+}
+
+.chain-states-wrapper i.material-icons + span {
+  transform: initial;
+}
+
+#header-nav .nav-link{
+  padding-bottom: 0;
+  border-bottom: 2px solid transparent;
+}
+
+#header-nav .nav-link.link-active,#header-nav .nav-link:hover{
+  border-bottom: 2px solid $primary;
+}
+
+.rounded-icon{
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $light;
+  margin-right: 10px;
+
+  i{
+    color: #ffffff;
+    font-size: 16px;  
+  }
+}
+
+.nav-link .link-span{
+  color: $body-color;
+}
+
+.body-color {
+  color: $body-color;
+}
+
+.dark-color {
+  color: $dark;
+}
+
+.primary-color{
+  color: $primary;
+}
+
+.light-color {
+  color: $light;
+}
+
+span#network-nav.network-name{
+  color: $primary;
+}
+// End added
 
   .no-select {
     -webkit-touch-callout: none;
@@ -134,17 +330,12 @@ body {
 
   a.navbar-brand .logo {
     max-height: 40px;
-    max-width: 40px;
+    max-width: 150px;
   }
 
   #header-search {
     margin-left: 1rem;
     margin-right: 0.5rem;
-
-    .form-control {
-      height: auto;
-      padding: 0.5rem 0;
-    }
   }
 
   #mobile-searchbar {
@@ -550,10 +741,10 @@ body {
     margin-top: 0.2em;
 
     .block {
-      width: 1.5em;
+      width: 1em;
       height: 1.5em;
       display: inline-block;
-      margin-right: 0.2em;
+      margin-right: 0.4em;
       border: 0.0em solid #bd081c;
       -webkit-box-shadow: 1px 1px 3px 0px rgba(163, 163, 163, 1);
       -moz-box-shadow: 1px 1px 3px 0px rgba(163, 163, 163, 1);
@@ -561,7 +752,7 @@ body {
       border-radius: 3px;
 
       .full {
-        background-color: #009118;
+        background-color: $secondary-light;
         height: 100%;
         width: 100%;
       }

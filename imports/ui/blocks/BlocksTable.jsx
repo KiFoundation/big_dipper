@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import HeaderRecord from './HeaderRecord.jsx';
 import Blocks from '/imports/ui/blocks/ListContainer.js'
 import { LoadMore } from '../components/LoadMore.jsx';
@@ -17,10 +17,15 @@ export default class BlocksTable extends Component {
         super(props);
         this.state = {
             limit: Meteor.settings.public.initialPageSize,
-            sidebarOpen: (props.location.pathname.split("/blocks/").length == 2)
+            sidebarOpen: (props?.location?.pathname?.split("/blocks/")?.length == 2)
         };
 
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+        this.handleShowMore = this.handleShowMore.bind(this);
+    }
+
+    static defaultProps = {
+        showChainStates: true,
     }
 
     isBottom(el) {
@@ -36,30 +41,39 @@ export default class BlocksTable extends Component {
     }
     
     trackScrolling = () => {
-        const wrappedElement = document.getElementById('block-table');
-        if (this.isBottom(wrappedElement)) {
-            // console.log('header bottom reached');
-            document.removeEventListener('scroll', this.trackScrolling);
-            this.setState({loadmore:true});
-            this.setState({
-                limit: this.state.limit+10
-            }, (err, result) => {
-                if (!err){
-                    document.addEventListener('scroll', this.trackScrolling);
-                }
-                if (result){
-                    this.setState({loadmore:false});
-                }
-            })
+        if (!this.props.limit) {
+            const wrappedElement = document.getElementById('block-table');
+            if (this.isBottom(wrappedElement)) {
+                // console.log('header bottom reached');
+                document.removeEventListener('scroll', this.trackScrolling);
+                this.setState({loadmore:true});
+                this.setState({
+                    limit: this.state.limit+10
+                }, (err, result) => {
+                    if (!err){
+                        document.addEventListener('scroll', this.trackScrolling);
+                    }
+                    if (result){
+                        this.setState({loadmore:false});
+                    }
+                })
+            }
         }
     };
 
     componentDidUpdate(prevProps){
-        if (this.props.location.pathname != prevProps.location.pathname){
+        if (this.props?.location?.pathname != prevProps?.location?.pathname){
             this.setState({
-                sidebarOpen: (this.props.location.pathname.split("/blocks/").length == 2)
+                sidebarOpen: (this.props?.location?.pathname?.split("/blocks/")?.length == 2)
             })
         }
+    }
+
+    handleShowMore() {
+        let timer = Meteor.setTimeout(() => {
+            this.props.history.push('/blocks');
+            Meteor.clearTimeout(timer);
+        },100)
     }
 
     onSetSidebarOpen(open) {
@@ -77,12 +91,20 @@ export default class BlocksTable extends Component {
     render(){
         return <div>
             <Helmet>
-                <title>Latest Blocks on Cosmos Hub | The Big Dipper</title>
-                <meta name="description" content="Latest blocks committed by validators on Cosmos Hub" />
+                <title>Latest Blocks on Ki Chain</title>
+                <meta name="description" content="Latest blocks committed by validators on Ki Chain" />
             </Helmet>
             <Row>
-                <Col md={3} xs={12}><h1 className="d-none d-lg-block"><T>blocks.latestBlocks</T></h1></Col>
-                <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col>
+                <Col className="vertical-align justify-start">
+                    <h2 className="d-none d-lg-block dark-color mb-0 font-800">{this.props.title || <T>blocks.latestBlocks</T>}</h2>
+                    { !this.props.showChainStates && <Button className="ml-auto normal-shadow" onClick={this.handleShowMore}>
+                            <span className="dark-color text-normalize font-800 vertical-align translate-none">
+                                <i className="material-icons light-color mr-2">add_circle</i><T>common.seeMore</T>
+                            </span>
+                        </Button>
+                    }
+                </Col>
+                { this.props.showChainStates && <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> }
             </Row>
             <Switch>
                 <Route path="/blocks/:blockId" render={(props)=> <Sidebar 
@@ -100,9 +122,9 @@ export default class BlocksTable extends Component {
                 >
                 </Sidebar>} />
             </Switch>
-            <Container fluid id="block-table">
+            <Container fluid id="block-table" className="mt-4 pt-1">
                 <HeaderRecord />
-                <Blocks limit={this.state.limit} />
+                <Blocks history={this.props.history} limit={this.state.limit} />
             </Container>
             <LoadMore show={this.state.loadmore} />
         </div>

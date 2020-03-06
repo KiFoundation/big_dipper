@@ -36,8 +36,8 @@ export default class ValidatorDelegations extends Component{
                     loading: false,
                     numDelegatiors:delegations.length,
                     delegations: delegations.map((d, i) => {
-                        return <Row key={i} className="delegation-info">
-                            <Col md={8} className="text-nowrap overflow-auto"><Account address={d.delegator_address} /></Col>
+                        return <Row key={i} className="delegation-info block-info bg-white my-2 py-3 list-border">
+                            <Col md={8} className="text-nowrap overflow-auto"><Account linkStyle={{color: '#043bea'}} address={d.delegator_address} /></Col>
                             <Col md={4}>{new Coin(d.shares/this.props.shares*this.props.tokens).toString(2)}s</Col>
                         </Row>
                     })
@@ -51,18 +51,18 @@ export default class ValidatorDelegations extends Component{
             return <div><Spinner type="grow" color="primary"/></div>
         }
         else{
-            return <Card>
-                <CardHeader>{(this.state.numDelegatiors > 0)?this.state.numDelegatiors:'No'} <T>common.delegators</T> {(this.state.numDelegatiors > 0)?<small className="text-secondary">({new Coin(this.props.tokens/this.state.numDelegatiors).toString(2)}s / delegator)</small>:''}</CardHeader>
-                <CardBody className="list">
-                    <Container fluid>
-                        <Row className="header text-nowrap d-none d-lg-flex">
-                            <Col md={8}><i className="fas fa-at"></i> <span><T>common.addresses</T></span></Col>
-                            <Col md={4}><i className="fas fa-piggy-bank"></i> <span><T>common.amounts</T></span></Col>
+            // return <Card>
+                // {/* <CardHeader>{(this.state.numDelegatiors > 0)?this.state.numDelegatiors:'No'} <T>common.delegators</T> {(this.state.numDelegatiors > 0)?<small className="text-secondary">({new Coin(this.props.tokens/this.state.numDelegatiors).toString(2)}s / delegator)</small>:''}</CardHeader> */}
+                // <CardBody className="list">
+                    return (<Container fluid>
+                        <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}} >
+                            <Col md={8}><span className="dark-color font-500 text-uppercase"><T>validators.delegator</T></span></Col>
+                            <Col md={4}><span className="dark-color font-500 text-uppercase"><T>common.amounts</T></span></Col>
                         </Row>
                         {this.state.delegations}
-                    </Container>
-                </CardBody>
-            </Card>
+                    </Container>);
+                // </CardBody>
+            // </Card>
         }
     }
 }

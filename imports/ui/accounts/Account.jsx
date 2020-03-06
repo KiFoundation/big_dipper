@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Spinner, UncontrolledTooltip, Row, Col, Card, CardHeader, CardBody, Progress } from 'reactstrap';
+import { Spinner, UncontrolledTooltip, Row, Col, Card, CardHeader, CardBody, Progress, Button, } from 'reactstrap';
 import numbro from 'numbro';
+import { Link } from 'react-router-dom';
 import AccountCopy from '../components/AccountCopy.jsx';
 import LinkIcon from '../components/LinkIcon.jsx';
 import Delegations from './Delegations.jsx';
@@ -153,21 +154,34 @@ export default class AccountDetails extends Component{
         else if (this.state.accountExists){
             return <div id="account">
                 <Helmet>
-                    <title>Account Details of {this.state.address} on Cosmos Hub | The Big Dipper</title>
-                    <meta name="description" content={"Account Details of "+this.state.address+" on Cosmos Hub"} />
+                    <title>Account Details of {this.state.address} on Ki Chain</title>
+                    <meta name="description" content={"Account Details of "+this.state.address+" on Ki Chain"} />
                 </Helmet>
                 <Row>
-                    <Col md={3} xs={12}><h1 className="d-none d-lg-block"><T>accounts.accountDetails</T></h1></Col>
-                    <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col>
+                    <Col md={3} xs={12} className="vertical-align justify-start"><h2 className="d-none d-lg-block font-800 dark-color"><T>accounts.accountDetails</T></h2></Col>
+                    <Col md={9}>
+                        <Card className="mb-0 h-100 normal-shadow">
+                            <CardBody>
+                                <div className="d-block mb-2">
+                                    <span className="light-color text-uppercase font-500"><T>validators.address</T></span>
+                                    <div className="dark-color font-800"><span>{this.state?.address}</span></div>
+                                </div>
+                                <div className="d-block mb-2">
+                                    <span className="light-color text-uppercase font-500 d-block"><T>validators.rewardAddress</T></span>
+                                    <span className="dark-color font-800">{this.state?.operator_address}</span>
+                                </div>
+                            </CardBody>
+                        </Card>
+                    </Col>
                 </Row>
-                <Row>
+                {/* <Row>
                     <Col><h3 className="text-primary"><AccountCopy address={this.state.address} /></h3></Col>
-                </Row>
+                </Row> */}
                 <Row>
-                    <Col><Card>
-                        <CardHeader>
-                            Balance
-                            <div className="shareLink float-right">{this.renderShareLink()}</div>
+                    <Col><Card className="normal-shadow mt-4">
+                        <CardHeader className="bg-white pb-0">
+                        <span className="light-color text-uppercase font-500">Balance</span>
+                            {/* <div className="shareLink float-right">{this.renderShareLink()}</div> */}
                         </CardHeader>
                         <CardBody>
                             <Row className="account-distributions">
@@ -219,15 +233,17 @@ export default class AccountDetails extends Component{
                         </CardBody>
                     </Card></Col>
                 </Row>
-                <Row>
+                <Row className="mt-4">
                     <Col md={6}>
+                        <Col md={12} className="vertical-align justify-start px-0"><h2 className="d-none d-lg-block font-800 dark-color"><T>common.delegations</T></h2></Col>
                         <Delegations address={this.state.address} delegations={this.state.delegations}/>
                     </Col>
                     <Col md={6}>
+                        <Col md={3} xs={12} className="vertical-align justify-start px-0"><h2 className="d-none d-lg-block font-800 dark-color"><T>common.unbounding</T></h2></Col>
                         <Unbondings address={this.state.address} unbonding={this.state.unbondingDelegations}/>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="mt-5">
                     <Col>
                         <AccountTransactions delegator={this.state.address} limit={100}/>
                     </Col>

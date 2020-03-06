@@ -85,11 +85,11 @@ export default class Transactions extends Component{
     render(){
         return <div id="transactions">
             <Helmet>
-                <title>Latest Transactions on Cosmos Hub | The Big Dipper</title>
-                <meta name="description" content="See what is happening on Cosmos Hub" />
+                <title>Latest Transactions on Ki Chain</title>
+                <meta name="description" content="See what is happening on Ki Chain" />
             </Helmet>
             <Row>
-                <Col md={3} xs={12}><h1 className="d-none d-lg-block"><T>transactions.transactions</T></h1></Col>
+                <Col md={3} xs={12} className="vertical-align justify-start"><h2 className="d-none d-lg-block dark-color font-800"><T>transactions.transactions</T></h2></Col>
                 <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col>
             </Row>
             <Switch>

@@ -102,7 +102,7 @@ export default class Account extends Component{
 
     render(){
         return <span className={(this.props.copy)?"address overflow-auto d-inline-block copy":"address overflow-auto d-inline"} >
-            <Link to={this.state.address}>{this.userIcon()}{this.state.moniker}</Link>
+            <Link className="primary-color font-800" to={this.state.address}>{this.userIcon()}{this.state.moniker}</Link>
         </span>
     }
 }
