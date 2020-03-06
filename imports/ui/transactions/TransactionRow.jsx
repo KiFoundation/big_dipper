@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card, Alert, Spinner } from 'reactstrap';
 import { TxIcon } from '../components/Icons.jsx';
-import Activities from '../components/Activities.jsx';
+// import Activities from '../components/Activities.jsx';
+import Amounts from '../components/Amounts.jsx';
 import CosmosErrors from '../components/CosmosErrors.jsx';
 import TimeAgo from '../components/TimeAgo.jsx';
 import numbro from 'numbro';
@@ -11,14 +12,23 @@ import Coin from '/both/utils/coins.js'
 import SentryBoundary from '../components/SentryBoundary.jsx';
 import i18n from 'meteor/universe:i18n';
 
+import { MsgType } from '../components/MsgType.jsx';
+
 export const TransactionRow = (props) => {
     let tx = props.tx;
     // console.log(tx);
     return <SentryBoundary><Row className={(tx.code)?"tx-info invalid":"tx-info" + " bg-white my-2 py-3 mx-1 list-border vertical-middle"}>
-        {/* <Col xs={12} lg={7} className="activity">{(tx.tx.value.msg && tx.tx.value.msg.length >0)?tx.tx.value.msg.map((msg,i) => {
-            return <Card body key={i}><Activities msg={msg} invalid={(!!tx.code)} events={tx.events} /></Card>
-        }):''}</Col> */}
-        <Col xs={(!props.blockList)?{size:6}:{size:12}} md={(!props.blockList)?{size:3}:{size:7}} lg={(!props.blockList)?{size:1}:{size:2}} className="text-truncate"><i className="fas fa-hashtag d-lg-none"></i> <Link className="primary-color font-800" to={"/transactions/"+tx.txhash}>{tx.txhash}</Link></Col>
+    <Col xs={(!props.blockList)?{size:6}:{size:12}} md={(!props.blockList)?{size:3}:{size:7}} lg={(!props.blockList)?{size:1}:{size:2}} className="text-truncate"><i className="fas fa-hashtag d-lg-none"></i> <Link className="primary-color font-800" to={"/transactions/"+tx.txhash}>{tx.txhash}</Link></Col>
+
+    {<Col xs={5} md={3} lg={2} className="text-nowrap">{(tx.tx.value.msg && tx.tx.value.msg.length >0)?[tx.tx.value.msg[0]].map((msg,i) => {
+      return <MsgType type={msg.type} num={tx.tx.value.msg.length}/> 
+      }):''}</Col> }
+
+      {<Col xs={5} md={3} lg={2} className="text-nowrap">{(tx.tx.value.msg && tx.tx.value.msg.length >0)?[tx.tx.value.msg[0]].map(msg => {
+        // console.log(tx.txhash)
+      return <Amounts msg={msg} hash={tx.txhash} invalid={(!!tx.code)}/>
+      }):''}</Col>}
+
         {(!props.blockList)?<Col xs={6} md={9} lg={{size:2,order:"last"}} className="text-nowrap"><span className="vertical-middle primary-color"><i className="material-icons mr-2">schedule</i> {tx.block()?<TimeAgo time={tx.block().time} />:''}</span></Col>:''}
         {(!props.blockList)?<Col xs={4} md={2} lg={1}><i className="fas fa-database d-lg-none"></i> <Link className="primary-color font-800" to={"/blocks/"+tx.height}>{numbro(tx.height).format("0,0")}</Link></Col>:''}
         <Col xs={(!props.blockList)?2:4} md={1}>{(!tx.code)?<TxIcon valid />:<TxIcon />}</Col>

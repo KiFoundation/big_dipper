@@ -176,7 +176,7 @@ body {
 
   i{
     color: #ffffff;
-    font-size: 16px;  
+    font-size: 16px;
   }
 }
 
@@ -520,7 +520,8 @@ span#network-nav.network-name{
   .progress {
     height: inherit !important;
     font-size: inherit !important;
-    border: 1px solid #ddd !important;
+    border: 0px solid #ddd !important;
+    background-color: #fff
   }
 
   .tally-result .progress-bar {
@@ -1156,3 +1157,55 @@ span#network-nav.network-name{
     cursor: help;
     opacity: 0.7;
   }
+
+  .badge{
+    font-weight: 400;
+    padding: 7px 10px;
+    margin-right: 5px;
+    font-size: 12px;
+    border-radius: 50px;
+  }
+
+  .badge-success {
+    background-color: #b8e7bb;
+    color: #55bf5a;
+  }
+
+  .badge-info {
+    background-color: #f6f2ff;
+    color: #9c6cff;
+
+  }
+
+  .badge-secondary {
+    background-color: #f6f2ff;
+    color: #9c6cff;
+  }
+
+  .badge-danger {
+    background-color: #fff2f2;
+    color: #bf5555;
+  }
+
+  .badge-dark {
+    background-color: #f6f2ff;
+    color: #9c6cff;
+  }
+
+  .badge-warning {
+    background-color: #ffd887;
+    color: #eba01b;
+  }
+
+  .progress-val{
+    background-color: #000000;
+  }
+
+  .progress-bar {
+    background-color: $primary;
+    opacity: 0.7;
+    font-weight: 400;
+    padding: 5px 5px;
+    font-size: 12px;
+    border-radius: 7px;
+}

@@ -4,14 +4,16 @@ import i18n from 'meteor/universe:i18n';
 
 const T = i18n.createComponent();
 
+
 export const MsgType = (props) => {
+  console.log(props.num);
     switch (props.type){
     // bank
     case "cosmos-sdk/MsgSend":
         return <Badge color="success"><T>messageTypes.send</T></Badge>
     case "cosmos-sdk/MsgMultiSend":
-        return <Badge color="success"><T>messageTypes.multiSend</T></Badge>
-        
+        return <span><Badge color="success"><T>messageTypes.multiSend</T></Badge> {(props.num >1)? "+" + (props.num-1):''}</span>
+
         // staking
     case "cosmos-sdk/MsgCreateValidator":
         return <Badge color="warning"><T>messageTypes.createValidator</T></Badge>;
@@ -23,7 +25,7 @@ export const MsgType = (props) => {
         return <Badge color="warning"><T>messageTypes.undelegate</T></Badge>;
     case "cosmos-sdk/MsgBeginRedelegate":
         return <Badge color="warning"><T>messageTypes.redelegate</T></Badge>;
-        
+
         // gov
     case "cosmos-sdk/MsgSubmitProposal":
         return <Badge color="info"><T>messageTypes.submitProposal</T></Badge>
@@ -31,19 +33,19 @@ export const MsgType = (props) => {
         return <Badge color="info"><T>messageTypes.deposit</T></Badge>
     case "cosmos-sdk/MsgVote":
         return <Badge color="info"><T>messageTypes.vote</T></Badge>;
-        
+
         // distribution
     case "cosmos-sdk/MsgWithdrawValidatorCommission":
-        return <Badge color="secondary"><T>messageTypes.withdrawComission</T></Badge>;
+        return <span><Badge color="secondary"><T>messageTypes.withdrawComission</T></Badge><Badge color="secondary">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "cosmos-sdk/MsgWithdrawDelegationReward":
-        return <Badge color="secondary"><T>messageTypes.withdrawReward</T></Badge>;
+        return <span><Badge color="secondary"><T>messageTypes.withdrawReward</T></Badge><Badge color="secondary">{(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
     case "cosmos-sdk/MsgModifyWithdrawAddress":
-        return <Badge color="secondary"><T>messgeTypes.modifyWithdrawAddress</T></Badge>;
+        return <span><Badge color="secondary"><T>messgeTypes.modifyWithdrawAddress</T></Badge><Badge color="secondary"> {(props.num >1)? "+" + (props.num-1):''}</Badge></span>;
 
         // slashing
     case "cosmos-sdk/MsgUnjail":
         return <Badge color="danger"><T>messageTypes.unjail</T></Badge>;
-        
+
         // ibc
     case "cosmos-sdk/IBCTransferMsg":
         return <Badge color="dark"><T>messageTypes.IBCTransfer</T></Badge>;

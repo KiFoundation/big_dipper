@@ -20,17 +20,17 @@ export default class Home extends Component{
     render() {
         return <div id="home">
             <Helmet>
-                <title>The Big Dipper | Cosmos Explorer by Forbole</title>
+                <title>KiChain Block Explorer</title>
                 <meta name="description" content="Cosmos is a decentralized network of independent parallel blockchains, each powered by BFT consensus algorithms like Tendermint consensus." />
             </Helmet>
             <ChainStatesBlocks />
             {/* <Switch>
-                <Route path="/blocks/:blockId" render={(props)=> <Sidebar 
+                <Route path="/blocks/:blockId" render={(props)=> <Sidebar
                     sidebar={<Block {...props} />}
                     open={this.state.sidebarOpen}
                     onSetOpen={this.onSetSidebarOpen}
-                    styles={{ sidebar: { 
-                        background: "white", 
+                    styles={{ sidebar: {
+                        background: "white",
                         position: "fixed",
                         width: '85%',
                         zIndex: 4

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Card, Alert, Spinner } from 'reactstrap';
 import { TxIcon } from '../components/Icons.jsx';
-import Activities from '../components/Activities.jsx';
+// import Activities from '../components/Activities.jsx';
 import CosmosErrors from '../components/CosmosErrors.jsx';
 import TimeAgo from '../components/TimeAgo.jsx';
 import numbro from 'numbro';
@@ -23,13 +23,13 @@ export default class Transactions extends Component{
             if (this.props.transactions.length > 0){
                 this.setState({
                     txs: this.props.transactions.map((tx, i) => {
-                        return <TransactionRow 
-                            key={i} 
-                            index={i} 
-                            tx={tx} 
+                        return <TransactionRow
+                            key={i}
+                            index={i}
+                            tx={tx}
                         />
                     })
-                })    
+                })
             }
         }
     }
@@ -44,11 +44,12 @@ export default class Transactions extends Component{
         else{
             return <div className="transactions-list">
                 <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}}>
-                    {/* <Col xs={9} lg={7}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.activities</T></span></Col> */}
-                    <Col xs={3} lg={{size:1}}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.txHash</T></span></Col>
-                    <Col xs={4} md={2} lg={1}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>common.height</T></span></Col>
-                    <Col xs={2} md={1} className="text-nowrap"><span className="d-none d-lg-inline-block text-uppercase dark-color"><T>transactions.valid</T></span></Col>
-                    <Col xs={12} lg={2}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.fee</T></span></Col>
+                <Col xs={3} lg={{size:1}}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.txHash</T></span></Col>
+                <Col xs={5} md={3} lg={2}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.type</T></span></Col>
+                <Col xs={5} md={3} lg={2}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.amount</T></span></Col>
+                <Col xs={4} md={2} lg={1}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>common.height</T></span></Col>
+                <Col xs={2} md={1} className="text-nowrap"><span className="d-none d-lg-inline-block text-uppercase dark-color"><T>transactions.valid</T></span></Col>
+                <Col xs={12} lg={2}><span className="d-none d-md-inline-block text-uppercase dark-color"><T>transactions.fee</T></span></Col>
                 </Row>
                 {this.state.txs}
             </div>

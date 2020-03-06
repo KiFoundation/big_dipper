@@ -36,7 +36,7 @@ export default class TransactionTabs extends Component{
                 distributionTxs: this.props.distributionTxs,
                 governanceTxs: this.props.governanceTxs,
                 slashingTxs: this.props.slashingTxs
-            })    
+            })
         }
     }
 
@@ -95,17 +95,19 @@ export default class TransactionTabs extends Component{
                     <TabPane tabId="tx-transfer">
                         { this.state.transferTxs.length > 0 && <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}} >
                             <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
-                            <Col md={1}></Col>
-                            <Col md={8}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                            <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.type</T></span></Col>
+                            <Col md={2}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                            <Col md={1}><span className="dark-color font-500 text-uppercase"><T>transactions.valid</T></span></Col>
+                            <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.fee</T></span></Col>
                             </Row> }
                         <Row>
                             <Col>
                                 {(this.state.transferTxs.length > 0)?this.state.transferTxs.map((tx, i) => {
-                                    return <TransactionRow 
-                                        key={i} 
-                                        index={i} 
+                                    return <TransactionRow
+                                        key={i}
+                                        index={i}
                                         tx={tx}
-                                        blockList 
+                                        blockList
                                     />
                                 }):''}
                             </Col>
@@ -113,17 +115,19 @@ export default class TransactionTabs extends Component{
                     </TabPane>
                     <TabPane tabId="tx-staking">
                         { this.state.stakingTxs.length > 0 && <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}} >
-                            <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
-                            <Col md={1}></Col>
-                            <Col md={8}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.type</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={1}><span className="dark-color font-500 text-uppercase"><T>transactions.valid</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.fee</T></span></Col>
                         </Row> }
                         <Row>
                             <Col>
                                 {(this.state.stakingTxs.length > 0)?this.state.stakingTxs.map((tx, i) => {
-                                    return <TransactionRow 
-                                        key={i} 
-                                        index={i} 
-                                        tx={tx} 
+                                    return <TransactionRow
+                                        key={i}
+                                        index={i}
+                                        tx={tx}
                                         blockList
                                     />
                                 }):''}
@@ -132,17 +136,19 @@ export default class TransactionTabs extends Component{
                     </TabPane>
                     <TabPane tabId="tx-distr">
                         { this.state.distributionTxs.length > 0 && <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}} >
-                            <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
-                            <Col md={1}></Col>
-                            <Col md={8}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.type</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={1}><span className="dark-color font-500 text-uppercase"><T>transactions.valid</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.fee</T></span></Col>
                         </Row> }
                         <Row>
                             <Col>
                                 {(this.state.distributionTxs.length > 0)?this.state.distributionTxs.map((tx, i) => {
-                                    return <TransactionRow 
-                                        key={i} 
-                                        index={i} 
-                                        tx={tx} 
+                                    return <TransactionRow
+                                        key={i}
+                                        index={i}
+                                        tx={tx}
                                         blockList
                                     />
                                 }):''}
@@ -151,17 +157,19 @@ export default class TransactionTabs extends Component{
                     </TabPane>
                     <TabPane tabId="tx-gov">
                         { this.state.governanceTxs.length > 0 && <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}} >
-                            <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
-                            <Col md={1}></Col>
-                            <Col md={8}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.type</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={1}><span className="dark-color font-500 text-uppercase"><T>transactions.valid</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.fee</T></span></Col>
                         </Row> }
                         <Row>
                             <Col>
                                 {(this.state.governanceTxs.length > 0)?this.state.governanceTxs.map((tx, i) => {
-                                    return <TransactionRow 
-                                        key={i} 
-                                        index={i} 
-                                        tx={tx} 
+                                    return <TransactionRow
+                                        key={i}
+                                        index={i}
+                                        tx={tx}
                                         blockList
                                     />
                                 }):''}
@@ -170,17 +178,19 @@ export default class TransactionTabs extends Component{
                     </TabPane>
                     <TabPane tabId="tx-slashing">
                         { this.state.slashingTxs.length > 0 && <Row className="header text-nowrap d-none d-lg-flex mb-3 mt-4" style={{border: 0}} >
-                            <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
-                            <Col md={1}></Col>
-                            <Col md={8}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>common.hash</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.type</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>validators.amount</T></span></Col>
+                        <Col md={1}><span className="dark-color font-500 text-uppercase"><T>transactions.valid</T></span></Col>
+                        <Col md={2}><span className="dark-color font-500 text-uppercase"><T>transactions.fee</T></span></Col>
                         </Row> }
                         <Row>
                             <Col>
                                 {(this.state.slashingTxs.length > 0)?this.state.slashingTxs.map((tx, i) => {
-                                    return <TransactionRow 
-                                        key={i} 
-                                        index={i} 
-                                        tx={tx} 
+                                    return <TransactionRow
+                                        key={i}
+                                        index={i}
+                                        tx={tx}
                                         blockList
                                     />
                                 }):''}
@@ -192,4 +202,3 @@ export default class TransactionTabs extends Component{
         </div>
     }
 }
-                    
